@@ -38,7 +38,7 @@ public class BaseClass
 		PropertyConfigurator.configure("log4j.properties"); // Added Logger
 		logger.setLevel(Level.DEBUG); // to get the debug log
 		logger.debug("Debug logging has started ");
-        System.setProperty("webdriver.chrome.driver", "C:\\chromedriver.exe");
+		System.setProperty("webdriver.chrome.driver", readconfig.getChromePath());
 		ChromeOptions options = new ChromeOptions();
 		options.addArguments("--no-sandbox");
 		options.addArguments("--allow-running-insecure-content");
