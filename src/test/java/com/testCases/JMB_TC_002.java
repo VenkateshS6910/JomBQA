@@ -14,7 +14,6 @@ import com.pageObjects.CA_ProfilePage;
 import com.pageObjects.LoginPage;
 
 public class JMB_TC_002 extends BaseClass {
-	@Test(priority=2)
 	public void JMB_TC_002 () throws IOException {
 		
 		driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);		//Implicit Wait
