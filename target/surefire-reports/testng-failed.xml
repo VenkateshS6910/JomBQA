@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Failed suite [JomboneTestSuite]" guice-stage="DEVELOPMENT" verbose="0">
+  <listeners>
+    <listener class-name="com.utilities.Reporting"/>
+  </listeners>
+  <test thread-count="5" name="TestNGTest1(failed)" verbose="0">
+    <parameter name="FirstName" value="Sample first name value"/>
+    <parameter name="LastName" value="Sample last name value"/>
+    <classes>
+      <class name="com.testCases.JMB_TC_002">
+        <methods>
+          <include name="tearDown"/>
+          <include name="JMB_TC_002"/>
+          <include name="setup"/>
+        </methods>
+      </class> <!-- com.testCases.JMB_TC_002 -->
+    </classes>
+  </test> <!-- TestNGTest1(failed) -->
+</suite> <!-- Failed suite [JomboneTestSuite] -->
