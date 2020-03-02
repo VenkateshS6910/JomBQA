@@ -42,8 +42,6 @@ public class BaseClass
 		ChromeOptions options = new ChromeOptions();
 		options.addArguments("--no-sandbox");
 		options.addArguments("--allow-running-insecure-content");
-		options.addArguments("window-size=1920x1080");
-		options.addArguments("--disable-extensions");
 		DesiredCapabilities capabilities = DesiredCapabilities.chrome();
 		capabilities.setCapability(ChromeOptions.CAPABILITY, options);
 		capabilities.setCapability("acceptSslCerts", true);
