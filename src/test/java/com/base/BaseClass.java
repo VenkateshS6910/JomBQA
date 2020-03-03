@@ -40,13 +40,8 @@ public class BaseClass
 		logger.debug("Debug logging has started ");
         System.setProperty("webdriver.chrome.driver", "C:\\chromedriver.exe");
 		ChromeOptions options = new ChromeOptions();
-		options.addArguments("--no-sandbox");
-		options.addArguments("--allow-running-insecure-content");
-		DesiredCapabilities capabilities = DesiredCapabilities.chrome();
-		capabilities.setCapability(ChromeOptions.CAPABILITY, options);
-		capabilities.setCapability("acceptSslCerts", true);
-		capabilities.setCapability("acceptInsecureCerts", true);
-		driver = new ChromeDriver(capabilities);
+		options.addArguments("--disable-features=VizDisplayCompositor");
+		WebDriver driver = new ChromeDriver(options);
 
 		driver.get(baseURL);
         driver.manage().window().maximize();
