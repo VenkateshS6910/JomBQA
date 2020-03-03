@@ -11,8 +11,10 @@ import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeDriverService;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.remote.RemoteWebDriver;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.asserts.SoftAssert;
@@ -28,27 +30,25 @@ public class BaseClass
 	public String password=readconfig.getPassword(); 
 	public static WebDriver driver;
 	public static Logger logger;
-	
-	
+
+	private static ChromeDriverService service;
+
 	@BeforeClass
-	public void setup()
-	{		
+	public void setup() throws IOException {
 		// Initialization // Logger initiated within the setup method
 		logger=Logger.getLogger("Jombone");// Project Name 
 		PropertyConfigurator.configure("log4j.properties"); // Added Logger
 		logger.setLevel(Level.DEBUG); // to get the debug log
 		logger.debug("Debug logging has started ");
-        System.setProperty("webdriver.chrome.driver", "C:\\chromedriver.exe");
 		ChromeOptions options = new ChromeOptions();
-		options.addArguments("start-maximized"); // https://stackoverflow.com/a/26283818/1689770
-		options.addArguments("enable-automation"); // https://stackoverflow.com/a/43840128/1689770
-		options.addArguments("--no-sandbox"); //https://stackoverflow.com/a/50725918/1689770
-		options.addArguments("--disable-infobars"); //https://stackoverflow.com/a/43840128/1689770
-		options.addArguments("--disable-dev-shm-usage"); //https://stackoverflow.com/a/50725918/1689770
-		options.addArguments("--disable-browser-side-navigation"); //https://stackoverflow.com/a/49123152/1689770
-		options.addArguments("--disable-gpu"); //https://stackoverflow.com/questions/51959986/how-to-solve-selenium-chromedriver-timed-out-receiving-message-from-renderer-exc
-		options.addArguments("enable-features=NetworkServiceInProcess");
-		options.addArguments("--force-device-scale-factor=1");
+    service =
+        new ChromeDriverService.Builder()
+            .usingDriverExecutable(new File("C:\\chromedriver.exe"))
+            .usingAnyFreePort()
+            .build();
+		service.start();
+		driver = new RemoteWebDriver(service.getUrl(), new ChromeOptions());
+
 
 		driver = new ChromeDriver(options);
 		driver.get(baseURL);
