@@ -40,17 +40,7 @@ public class BaseClass
 		PropertyConfigurator.configure("log4j.properties"); // Added Logger
 		logger.setLevel(Level.DEBUG); // to get the debug log
 		logger.debug("Debug logging has started ");
-		ChromeOptions options = new ChromeOptions();
-    service =
-        new ChromeDriverService.Builder()
-            .usingDriverExecutable(new File( readconfig.getChromePath()))
-            .usingAnyFreePort()
-            .build();
-		service.start();
-		driver = new RemoteWebDriver(service.getUrl(), new ChromeOptions());
-
-
-		driver = new ChromeDriver(options);
+		driver = new ChromeDriver();
 		driver.get(baseURL);
         driver.manage().window().maximize();
 	}
