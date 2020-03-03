@@ -47,7 +47,7 @@ public class BaseClass
 		options.addArguments("--disable-dev-shm-usage"); //https://stackoverflow.com/a/50725918/1689770
 		options.addArguments("--disable-browser-side-navigation"); //https://stackoverflow.com/a/49123152/1689770
 		options.addArguments("--disable-gpu"); //https://stackoverflow.com/questions/51959986/how-to-solve-selenium-chromedriver-timed-out-receiving-message-from-renderer-exc
-		options.addArguments("enable-features=NetworkServiceInProcess")
+		options.addArguments("enable-features=NetworkServiceInProcess");
 		options.addArguments("--force-device-scale-factor=1");
 
 		driver = new ChromeDriver(options);
