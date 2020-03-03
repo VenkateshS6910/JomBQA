@@ -43,7 +43,7 @@ public class BaseClass
 		ChromeOptions options = new ChromeOptions();
     service =
         new ChromeDriverService.Builder()
-            .usingDriverExecutable(new File("C:\\chromedriver.exe"))
+            .usingDriverExecutable(new File( readconfig.getChromePath()))
             .usingAnyFreePort()
             .build();
 		service.start();
